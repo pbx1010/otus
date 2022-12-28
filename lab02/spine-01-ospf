@@ -30,9 +30,9 @@ set interfaces xe-0/0/3 unit 0 family inet address 10.1.1.4/31
 
 
 set interfaces lo0 unit 0 family inet address 172.16.0.2/32
-set protocols ospf area 0.0.0.0 interface xe-0/0/1.0 passive
-set protocols ospf area 0.0.0.0 interface xe-0/0/2.0 passive
-set protocols ospf area 0.0.0.0 interface xe-0/0/3.0 passive
+set protocols ospf area 0.0.0.0 interface xe-0/0/1.0
+set protocols ospf area 0.0.0.0 interface xe-0/0/2.0
+set protocols ospf area 0.0.0.0 interface xe-0/0/3.0
 set protocols ospf area 0.0.0.0 interface lo0.0 passive
 
 
