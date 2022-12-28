@@ -1,0 +1,37 @@
+set system host-name LEAF-02 
+
+set system root-authentication plain-text-password lab123
+
+
+delete  interfaces xe-0/0/0
+set interfaces xe-0/0/0 description "To SRV2"
+set interfaces xe-0/0/0 unit 0 family inet address 192.168.1.9/30
+
+delete  interfaces xe-0/0/1
+ 
+set interfaces xe-0/0/1 description "To Spine-01, xe-0/0/3"
+set interfaces xe-0/0/1 vlan-tagging
+set interfaces xe-0/0/1 mtu 9216
+set interfaces xe-0/0/1 unit 0 vlan-id 10
+set interfaces xe-0/0/1 unit 0 family inet mtu 9100
+set interfaces xe-0/0/1 unit 0 family inet address 10.1.1.5/31
+
+delete  interfaces xe-0/0/2
+
+set interfaces xe-0/0/2 description "To Spine-02, xe-0/0/3"
+set interfaces xe-0/0/2 vlan-tagging
+set interfaces xe-0/0/2 mtu 9216
+set interfaces xe-0/0/2 unit 0 vlan-id 10
+set interfaces xe-0/0/2 unit 0 family inet mtu 9100
+set interfaces xe-0/0/2 unit 0 family inet address 10.1.2.5/31
+
+
+set interfaces lo0 unit 0 family inet address 172.16.1.3/32
+set protocols ospf area 0.0.0.0 interface xe-0/0/3.0 passive
+set protocols ospf area 0.0.0.0 interface xe-0/0/4.0 passive
+set protocols ospf area 0.0.0.0 interface lo0.0 passive
+
+set routing-options router-id 172.16.1.3
+set routing-options forwarding-table export lbpp
+
+set policy-options policy-statement lbpp term 1 then load-balance per-packet
