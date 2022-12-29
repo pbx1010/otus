@@ -2,6 +2,9 @@ set system host-name LEAF-01
 
 set system root-authentication plain-text-password lab123
 
+set interfaces xe-0/0/0 description "To SRV1"
+set interfaces xe-0/0/0 unit 0 family inet address 192.168.1.5/30
+
 delete  interfaces xe-0/0/1
  
 set interfaces xe-0/0/1 description "To Spine-01, xe-0/0/1"
