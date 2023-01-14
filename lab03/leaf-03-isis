@@ -43,8 +43,8 @@ set interfaces xe-0/0/3 unit 0 family iso
 set interfaces lo0 unit 0 family iso address 49.0001.1720.1601.0001.00
 
 
-set protocols isis interface xe-0/0/0.0 passive
-set protocols isis interface xe-0/0/1.0 passive
+# set protocols isis interface xe-0/0/0.0 passive
+# set protocols isis interface xe-0/0/1.0 passive
 set protocols isis interface xe-0/0/2.0
 set protocols isis interface xe-0/0/3.0
 set protocols isis interface lo0.0 passive
