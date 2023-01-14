@@ -74,8 +74,8 @@ set protocols bgp group POD-underlay neighbor %ip Leaf03% peer-as 65003
 set policy-options policy-statement export-lo0 term 1 from interface lo0.0
 set policy-options policy-statement export-lo0 term 1 then accept
 Настраиваем ECMP:
-set routing-options forwarding-table export lbpp
-set policy-options policy-statement lbpp term 1 then load-balance per-packet
+<dd>set routing-options forwarding-table export lbpp</dd>
+<dd>set policy-options policy-statement lbpp term 1 then load-balance per-packet</dd>
 ## Конфигурация Leaf01.
 Указываем явно Router ID:
 set routing-options router-id 172.16.1.1
