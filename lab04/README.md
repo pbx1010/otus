@@ -32,10 +32,11 @@
 <dd>Leaf01: 65001</dd>
 <dd>Leaf01: 65002</dd>
 <dd>Leaf01: 65003</dd>
-Типовая конфигурация для Leaf коммутаторов.
+
+## Типовая конфигурация для Leaf коммутаторов.
 Предварительное условие:
-• Выполнена настройка ip связности между spine и leaf коммутаторами
-• Выполнена настройка Loopback интерфейсов
+<dd>• Выполнена настройка ip связности между spine и leaf коммутаторами</dd>
+<dd>• Выполнена настройка Loopback интерфейсов</dd>
 Указываем явно Router ID:
 set routing-options router-id %ip адрес лупбек интерфейса%
 Задаем номер автономной системы:
@@ -82,12 +83,12 @@ set routing-options router-id 172.16.1.1
 Задаем номер автономной системы:
 set routing-options autonomous-system 65001
 Настраиваем eBGP underlay:
-set protocols bgp group POD-underlay export export-lo0
-set protocols bgp group POD-underlay multipath multiple-as
-set protocols bgp group POD-underlay neighbor 10.1.1.0 description "Spine01"
-set protocols bgp group POD-underlay neighbor 10.1.1.0 peer-as 65101
-set protocols bgp group POD-underlay neighbor 10.1.2.0 description "Spine02"
-set protocols bgp group POD-underlay neighbor 10.1.2.0 peer-as 65102
+<dd>set protocols bgp group POD-underlay export export-lo0</dd>
+<dd>set protocols bgp group POD-underlay multipath multiple-as</dd>
+<dd>set protocols bgp group POD-underlay neighbor 10.1.1.0 description "Spine01"</dd>
+<dd>set protocols bgp group POD-underlay neighbor 10.1.1.0 peer-as 65101</dd>
+<dd>set protocols bgp group POD-underlay neighbor 10.1.2.0 description "Spine02"</dd>
+<dd>set protocols bgp group POD-underlay neighbor 10.1.2.0 peer-as 65102</dd>
 Настраиваем политику для экспорта ip адреса Loopback интерфейса в eBGP:
 set policy-options policy-statement export-lo0 term 1 from interface lo0.0
 set policy-options policy-statement export-lo0 term 1 then accept
