@@ -76,7 +76,7 @@ set policy-options policy-statement export-lo0 term 1 then accept
 Настраиваем ECMP:
 set routing-options forwarding-table export lbpp
 set policy-options policy-statement lbpp term 1 then load-balance per-packet
-Конфигурация Leaf01.
+## Конфигурация Leaf01.
 Указываем явно Router ID:
 set routing-options router-id 172.16.1.1
 Задаем номер автономной системы:
@@ -94,7 +94,7 @@ set policy-options policy-statement export-lo0 term 1 then accept
 Настраиваем ECMP:
 set routing-options forwarding-table export lbpp
 set policy-options policy-statement lbpp term 1 then load-balance per-packet
-Конфигурация Leaf02.
+## Конфигурация Leaf02.
 Указываем явно Router ID:
 set routing-options router-id 172.16.1.2
 Задаем номер автономной системы:
@@ -130,7 +130,7 @@ set policy-options policy-statement export-lo0 term 1 then accept
 Настраиваем ECMP:
 set routing-options forwarding-table export lbpp
 set policy-options policy-statement lbpp term 1 then load-balance per-packet
-Конфигурация для Spine01.
+## Конфигурация для Spine01.
 Указываем явно Router ID:
 set routing-options router-id 172.16.0.1
 Задаем номер автономной системы:
