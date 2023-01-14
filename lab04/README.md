@@ -37,41 +37,41 @@
 Предварительное условие:
 <dd>• Выполнена настройка ip связности между spine и leaf коммутаторами</dd>
 <dd>• Выполнена настройка Loopback интерфейсов</dd>
-Указываем явно Router ID:
-set routing-options router-id %ip адрес лупбек интерфейса%
+## Указываем явно Router ID:
+set routing-options router-id %ip адрес лупбек интерфейса%</dd>
 Задаем номер автономной системы:
-set routing-options autonomous-system %%
-Настраиваем eBGP underlay:
-set protocols bgp group POD-underlay export export-lo0
-set protocols bgp group POD-underlay multipath multiple-as
-set protocols bgp group POD-underlay neighbor %ip spine01% description "Spine01"
-set protocols bgp group POD-underlay neighbor %ip spine01% peer-as 65101
-set protocols bgp group POD-underlay neighbor %ip spine02% description "Spine02"
-set protocols bgp group POD-underlay neighbor %ip spine02% peer-as 65102
-Настраиваем политику для экспорта ip адреса Loopback интерфейса в eBGP:
-set policy-options policy-statement export-lo0 term 1 from interface lo0.0
-set policy-options policy-statement export-lo0 term 1 then accept
+set routing-options autonomous-system %%</dd>
+## Настраиваем eBGP underlay:
+set protocols bgp group POD-underlay export export-lo0</dd>
+set protocols bgp group POD-underlay multipath multiple-as</dd>
+set protocols bgp group POD-underlay neighbor %ip spine01% description "Spine01"</dd>
+set protocols bgp group POD-underlay neighbor %ip spine01% peer-as 65101</dd>
+set protocols bgp group POD-underlay neighbor %ip spine02% description "Spine02"</dd>
+set protocols bgp group POD-underlay neighbor %ip spine02% peer-as 65102</dd>
+## Настраиваем политику для экспорта ip адреса Loopback интерфейса в eBGP:
+set policy-options policy-statement export-lo0 term 1 from interface lo0.0</dd>
+set policy-options policy-statement export-lo0 term 1 then accept</dd>
 Настраиваем ECMP:
-set routing-options forwarding-table export lbpp
-set policy-options policy-statement lbpp term 1 then load-balance per-packet
-Типовая конфигурация для Spine коммутаторов.
+set routing-options forwarding-table export lbpp</dd>
+set policy-options policy-statement lbpp term 1 then load-balance per-packet</dd>
+## Типовая конфигурация для Spine коммутаторов.
 Предварительное условие:
-• Выполнена настройка ip связности между spine и leaf коммутаторами
-• Выполнена настройка Loopback интерфейсов
+• Выполнена настройка ip связности между spine и leaf коммутаторами</dd>
+• Выполнена настройка Loopback интерфейсов</dd>
 Указываем явно Router ID:
-set routing-options router-id %ip адрес лупбек интерфейса%
+set routing-options router-id %ip адрес лупбек интерфейса%</dd>
 Задаем номер автономной системы:
-set routing-options autonomous-system %%
-Настраиваем eBGP underlay:
-set protocols bgp group POD-underlay export export-lo0
-set protocols bgp group POD-underlay multipath multiple-as
-set protocols bgp group POD-underlay neighbor %ip Leaf01% description "Leaf01"
-set protocols bgp group POD-underlay neighbor %ip Leaf01% peer-as 65001
-set protocols bgp group POD-underlay neighbor %ip Leaf02% description "Leaf02"
-set protocols bgp group POD-underlay neighbor %ip Leaf02% peer-as 65002
-set protocols bgp group POD-underlay neighbor %ip Leaf03% description "Leaf03"
-set protocols bgp group POD-underlay neighbor %ip Leaf03% peer-as 65003
-Настраиваем политику для экспорта ip адреса Loopback интерфейса в eBGP:
+set routing-options autonomous-system %%</dd>
+## Настраиваем eBGP underlay:
+<dd>set protocols bgp group POD-underlay export export-lo0</dd>
+<dd>set protocols bgp group POD-underlay multipath multiple-as</dd>
+<dd>set protocols bgp group POD-underlay neighbor %ip Leaf01% description "Leaf01"</dd>
+<dd>set protocols bgp group POD-underlay neighbor %ip Leaf01% peer-as 65001</dd>
+<dd>set protocols bgp group POD-underlay neighbor %ip Leaf02% description "Leaf02"</dd>
+<dd>set protocols bgp group POD-underlay neighbor %ip Leaf02% peer-as 65002</dd>
+<dd>set protocols bgp group POD-underlay neighbor %ip Leaf03% description "Leaf03"</dd>
+<dd>set protocols bgp group POD-underlay neighbor %ip Leaf03% peer-as 65003</dd>
+## Настраиваем политику для экспорта ip адреса Loopback интерфейса в eBGP:
 set policy-options policy-statement export-lo0 term 1 from interface lo0.0
 set policy-options policy-statement export-lo0 term 1 then accept
 Настраиваем ECMP:
