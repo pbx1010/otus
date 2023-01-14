@@ -38,30 +38,30 @@
 <dd>• Выполнена настройка ip связности между spine и leaf коммутаторами</dd>
 <dd>• Выполнена настройка Loopback интерфейсов</dd>
 ## Указываем явно Router ID:
-set routing-options router-id %ip адрес лупбек интерфейса%</dd>
+<dd>set routing-options router-id %ip адрес лупбек интерфейса%</dd>
 Задаем номер автономной системы:
-set routing-options autonomous-system %%</dd>
+<dd>set routing-options autonomous-system %%</dd>
 ## Настраиваем eBGP underlay:
-set protocols bgp group POD-underlay export export-lo0</dd>
-set protocols bgp group POD-underlay multipath multiple-as</dd>
-set protocols bgp group POD-underlay neighbor %ip spine01% description "Spine01"</dd>
-set protocols bgp group POD-underlay neighbor %ip spine01% peer-as 65101</dd>
-set protocols bgp group POD-underlay neighbor %ip spine02% description "Spine02"</dd>
-set protocols bgp group POD-underlay neighbor %ip spine02% peer-as 65102</dd>
+<dd>set protocols bgp group POD-underlay export export-lo0</dd>
+<dd>set protocols bgp group POD-underlay multipath multiple-as</dd>
+<dd>set protocols bgp group POD-underlay neighbor %ip spine01% description "Spine01"</dd>
+<dd>set protocols bgp group POD-underlay neighbor %ip spine01% peer-as 65101</dd>
+<dd>set protocols bgp group POD-underlay neighbor %ip spine02% description "Spine02"</dd>
+<dd>set protocols bgp group POD-underlay neighbor %ip spine02% peer-as 65102</dd>
 ## Настраиваем политику для экспорта ip адреса Loopback интерфейса в eBGP:
-set policy-options policy-statement export-lo0 term 1 from interface lo0.0</dd>
-set policy-options policy-statement export-lo0 term 1 then accept</dd>
+<dd>set policy-options policy-statement export-lo0 term 1 from interface lo0.0</dd>
+<dd>set policy-options policy-statement export-lo0 term 1 then accept</dd>
 Настраиваем ECMP:
-set routing-options forwarding-table export lbpp</dd>
-set policy-options policy-statement lbpp term 1 then load-balance per-packet</dd>
+<dd>set routing-options forwarding-table export lbpp</dd>
+<dd>set policy-options policy-statement lbpp term 1 then load-balance per-packet</dd>
 ## Типовая конфигурация для Spine коммутаторов.
 Предварительное условие:
-• Выполнена настройка ip связности между spine и leaf коммутаторами</dd>
-• Выполнена настройка Loopback интерфейсов</dd>
+<dd>• Выполнена настройка ip связности между spine и leaf коммутаторами</dd>
+<dd>• Выполнена настройка Loopback интерфейсов</dd>
 Указываем явно Router ID:
-set routing-options router-id %ip адрес лупбек интерфейса%</dd>
+<dd>set routing-options router-id %ip адрес лупбек интерфейса%</dd>
 Задаем номер автономной системы:
-set routing-options autonomous-system %%</dd>
+<dd>set routing-options autonomous-system %%</dd>
 ## Настраиваем eBGP underlay:
 <dd>set protocols bgp group POD-underlay export export-lo0</dd>
 <dd>set protocols bgp group POD-underlay multipath multiple-as</dd>
