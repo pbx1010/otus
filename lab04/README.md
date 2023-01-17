@@ -10,7 +10,6 @@
 <dd>• третий октет - соответсвует номеру spine</dd>
 <dd>• четвёртый октет - значение по порядку, младший ip - spine, старший ip - leaf</dd>
 
-
 Принципы назначения IPv4-адресов для подключения клиентов:
 <dd>• для организации связности с клиентами выдаем адреса из приватной
 сети 192.168.0.0/16</dd>
@@ -77,7 +76,3 @@ set policy-options policy-statement export-lo0 term 1 then accept
 Настраиваем ECMP:
 <dd>set routing-options forwarding-table export lbpp</dd>
 <dd>set policy-options policy-statement lbpp term 1 then load-balance per-packet</dd>
-
-
-
-
