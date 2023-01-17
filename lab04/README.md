@@ -77,24 +77,7 @@ set policy-options policy-statement export-lo0 term 1 then accept
 Настраиваем ECMP:
 <dd>set routing-options forwarding-table export lbpp</dd>
 <dd>set policy-options policy-statement lbpp term 1 then load-balance per-packet</dd>
-## Конфигурация Leaf01.
-Указываем явно Router ID:
-set routing-options router-id 172.16.1.1
-Задаем номер автономной системы:
-set routing-options autonomous-system 65001
-Настраиваем eBGP underlay:
-<dd>set protocols bgp group POD-underlay export export-lo0</dd>
-<dd>set protocols bgp group POD-underlay multipath multiple-as</dd>
-<dd>set protocols bgp group POD-underlay neighbor 10.1.1.0 description "Spine01"</dd>
-<dd>set protocols bgp group POD-underlay neighbor 10.1.1.0 peer-as 65101</dd>
-<dd>set protocols bgp group POD-underlay neighbor 10.1.2.0 description "Spine02"</dd>
-<dd>set protocols bgp group POD-underlay neighbor 10.1.2.0 peer-as 65102</dd>
-Настраиваем политику для экспорта ip адреса Loopback интерфейса в eBGP:
-set policy-options policy-statement export-lo0 term 1 from interface lo0.0
-set policy-options policy-statement export-lo0 term 1 then accept
-Настраиваем ECMP:
-set routing-options forwarding-table export lbpp
-set policy-options policy-statement lbpp term 1 then load-balance per-packet
+
 ## Конфигурация Leaf02.
 Указываем явно Router ID:
 set routing-options router-id 172.16.1.2
