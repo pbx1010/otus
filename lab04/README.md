@@ -2,7 +2,7 @@
 Цель:
 Настроить еBGP для Underlay сети
 
-![isis.png](isis.png)
+![isis.png](LABA01-eBGP.pdf)
 
 <dd>План работы:</dd>
 Принципы назначения IP адресов:
