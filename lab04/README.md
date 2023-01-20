@@ -2,7 +2,7 @@
 Цель:
 Настроить еBGP для Underlay сети
 
-![LABA01-eBGP.pdf](LABA01-eBGP.pdf)
+![2023-01-20_19-13-28.png](LABA01-eBGP.pdf)
 
 <dd>План работы:</dd>
 Принципы назначения IP адресов:
