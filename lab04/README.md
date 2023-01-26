@@ -34,3 +34,55 @@
 <dd>Leaf01: 65001</dd>
 <dd>Leaf01: 65002</dd>
 <dd>Leaf01: 65003</dd>
+
+
+
+
+root@SPINE-01> show bgp summary
+Groups: 1 Peers: 3 Down peers: 1
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+inet.0
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+10.1.1.1              65001         50         48       0       0       21:09 0/0/0/0              0/0/0/0
+10.1.1.3              65002         48         47       0       0       21:01 0/0/0/0              0/0/0/0
+10.1.1.5              65003          0          0       0       0       25:31 Connect
+
+
+root@SPINE-02> show bgp summary
+Groups: 1 Peers: 3 Down peers: 2
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+inet.0
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+10.1.2.1              65001          0          0       0       0       27:44 Connect
+10.1.2.3              65002          0          0       0       0       27:44 Connect
+10.1.2.5              65003         55         54       0       0       23:27 0/0/0/0              0/0/0/0
+
+root@LEAF-01> show bgp summary
+Groups: 1 Peers: 2 Down peers: 1
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+inet.0
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+10.1.1.0              65101         58         58       0       0       25:28 0/0/0/0              0/0/0/0
+10.1.2.0              65102          0          0       0       0       29:57 Idle
+
+root@LEAF-02> show bgp summary
+Groups: 1 Peers: 2 Down peers: 1
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+inet.0
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+10.1.1.2              65101         60         59       0       0       26:06 0/0/0/0              0/0/0/0
+10.1.2.2              65102          0          0       0       0       30:37 Idle
+
+
+root@LEAF-03> show bgp summary
+Groups: 1 Peers: 2 Down peers: 1
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+inet.0
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+10.1.1.4              65101          0          0       0       0       31:31 Connect
+10.1.2.4              65102         62         61       0       0       27:03 0/0/0/0              0/0/0/0
