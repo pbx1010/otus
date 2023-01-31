@@ -62,6 +62,14 @@
 <dd>round-trip min/avg/max/stddev = 120.264/134.741/140.855/8.425 ms</dd>
 
 
+<dd>root@LEAF-01> show bgp summary</dd>
+<dd>Groups: 1 Peers: 2 Down peers: 0</dd>
+<dd>Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending</dd>
+<dd>inet.0</dd>
+<dd>                       6          6          0          0          0          0</dd>
+<dd>Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...</dd>
+<dd>10.1.1.0              65101       4622       4642       0       2 1d 10:55:25 3/3/3/0              0/0/0/0</dd>
+<dd>10.1.2.0              65101      13249      13294       0       0  4d 4:03:27 3/3/3/0              0/0/0/0</dd>
 
 
 
