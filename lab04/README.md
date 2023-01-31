@@ -37,6 +37,33 @@
 
 
 
+root@LEAF-01> ping 172.16.0.1
+PING 172.16.0.1 (172.16.0.1): 56 data bytes
+64 bytes from 172.16.0.1: icmp_seq=0 ttl=64 time=128.931 ms
+64 bytes from 172.16.0.1: icmp_seq=1 ttl=64 time=175.771 ms
+64 bytes from 172.16.0.1: icmp_seq=2 ttl=64 time=125.804 ms
+64 bytes from 172.16.0.1: icmp_seq=3 ttl=64 time=115.109 ms
+64 bytes from 172.16.0.1: icmp_seq=4 ttl=64 time=120.655 ms
+^C
+--- 172.16.0.1 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 115.109/133.254/175.771/21.771 ms
+
+{master:0}
+root@LEAF-01> ping 172.16.0.2
+PING 172.16.0.2 (172.16.0.2): 56 data bytes
+64 bytes from 172.16.0.2: icmp_seq=0 ttl=64 time=137.927 ms
+64 bytes from 172.16.0.2: icmp_seq=1 ttl=64 time=120.264 ms
+64 bytes from 172.16.0.2: icmp_seq=2 ttl=64 time=140.855 ms
+64 bytes from 172.16.0.2: icmp_seq=3 ttl=64 time=139.917 ms
+^C
+--- 172.16.0.2 ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 120.264/134.741/140.855/8.425 ms
+
+
+
+
 
 root@SPINE-01> show bgp summary
 Groups: 1 Peers: 3 Down peers: 1
