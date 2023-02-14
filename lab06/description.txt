@@ -27,6 +27,8 @@ Leaf01: 65001
 Leaf01: 65002
 Leaf01: 65003
 В качестве автономной системы для Overlay используется AS 65000
+
+
 Этап1 Конфигурация Underlay.
 Конфигурация Leaf01.
 Указываем явно Router ID:
@@ -46,6 +48,8 @@ set policy-options policy-statement export-lo0 term 1 then accept
 Настраиваем ECMP:
 set routing-options forwarding-table export lbpp
 set policy-options policy-statement lbpp term 1 then load-balance per-packet
+
+
 Конфигурация Leaf02.
 Указываем явно Router ID:
 set routing-options router-id 172.16.1.2
@@ -64,6 +68,8 @@ set policy-options policy-statement export-lo0 term 1 then accept
 Настраиваем ECMP:
 set routing-options forwarding-table export lbpp
 set policy-options policy-statement lbpp term 1 then load-balance per-packet
+
+
 Конфигурация Leaf03.
 Указываем явно Router ID:
 set routing-options router-id 172.16.1.3
@@ -102,6 +108,8 @@ set policy-options policy-statement export-lo0 term 1 then accept
 Настраиваем ECMP:
 set routing-options forwarding-table export lbpp
 set policy-options policy-statement lbpp term 1 then load-balance per-packet
+
+
 Конфигурация для Spine02.
 Указываем явно Router ID:
 set routing-options router-id 172.16.0.2
