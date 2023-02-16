@@ -329,6 +329,8 @@ set protocols bgp group POD-overlay neighbor 172.16.1.2 description "Leaf03"
 set protocols bgp group POD-overlay neighbor 172.16.0.2 description "Spine02"
 set protocols bgp group POD-overlay cluster 172.16.0.1
 set protocols bgp group POD-overlay multipath
+
+
 Конфигурация на Spine02.
 Настраиваем iBGP EVPN Overlay:
 set protocols bgp group POD-overlay local-as 65000
@@ -341,6 +343,8 @@ set protocols bgp group POD-overlay neighbor 172.16.1.2 description "Leaf03"
 set protocols bgp group POD-overlay neighbor 172.16.0.1 description "Spine01"
 set protocols bgp group POD-overlay cluster 172.16.0.2
 set protocols bgp group POD-overlay multipath
+
+
 Проверка уровня Overlay:
 1. На spine коммутаторах проверить установление сессий с лиф коммутаторами:
 show bgp summary | match Establ | match 65000
