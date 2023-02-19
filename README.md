@@ -4,3 +4,4 @@
  - [Lab03. Настроить IS-IS для Underlay сети](lab03/)
  - [Lab04. Настроить BGP для Underlay сети](lab04/)
  - [Lab05. Настроить Overlay на основе VxLAN EVPN L2](lab05/)
+ - [Lab06. Настроить Overlay на основе VxLAN EVPN L3](lab06/)
