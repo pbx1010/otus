@@ -1,0 +1,38 @@
+Конфигурация для Spine02.
+
+Указываем явно Router ID:
+set routing-options router-id 172.16.0.2
+
+Задаем номер автономной системы:
+set routing-options autonomous-system 65101
+
+Настраиваем eBGP underlay:
+set protocols bgp group POD-underlay export export-lo0
+set protocols bgp group POD-underlay multipath multiple-as
+set protocols bgp group POD-underlay neighbor 10.1.2.1 description "Leaf01"
+set protocols bgp group POD-underlay neighbor 10.1.2.1 peer-as 65001
+set protocols bgp group POD-underlay neighbor 10.1.2.3 description "Leaf02"
+set protocols bgp group POD-underlay neighbor 10.1.2.3 peer-as 65002
+set protocols bgp group POD-underlay neighbor 10.1.2.5 description "Leaf03"
+set protocols bgp group POD-underlay neighbor 10.1.2.5 peer-as 65003
+
+Настраиваем политику для экспорта ip адреса Loopback интерфейса в eBGP:
+set policy-options policy-statement export-lo0 term 1 from interface lo0.0
+set policy-options policy-statement export-lo0 term 1 then accept
+
+Настраиваем ECMP:
+set routing-options forwarding-table export lbpp
+set policy-options policy-statement lbpp term 1 then load-balance per-packet
+
+
+Настраиваем iBGP EVPN Overlay:
+set protocols bgp group POD-overlay local-as 65000
+set protocols bgp group POD-overlay type internal
+set protocols bgp group POD-overlay family evpn signaling
+set protocols bgp group POD-overlay local-address 172.16.0.2
+set protocols bgp group POD-overlay neighbor 172.16.1.1 description "Leaf01"
+set protocols bgp group POD-overlay neighbor 172.16.1.2 description "Leaf02"
+set protocols bgp group POD-overlay neighbor 172.16.1.3 description "Leaf03"
+set protocols bgp group POD-overlay neighbor 172.16.0.1 description "Spine01"
+set protocols bgp group POD-overlay cluster 172.16.0.2
+set protocols bgp group POD-overlay multipath

@@ -1,0 +1,93 @@
+Конфигурация Leaf03.
+
+Указываем явно Router ID:
+set routing-options router-id 172.16.1.3
+
+Задаем номер автономной системы:
+set routing-options autonomous-system 65003
+
+Настраиваем eBGP underlay:
+set protocols bgp group POD-underlay export export-lo0
+set protocols bgp group POD-underlay multipath multiple-as
+set protocols bgp group POD-underlay neighbor 10.1.1.4 description "Spine01"
+set protocols bgp group POD-underlay neighbor 10.1.1.4 peer-as 65101
+set protocols bgp group POD-underlay neighbor 10.1.2.4 description "Spine02"
+set protocols bgp group POD-underlay neighbor 10.1.2.4 peer-as 65101
+
+Настраиваем политику для экспорта ip адреса Loopback интерфейса в eBGP:
+set policy-options policy-statement export-lo0 term 1 from interface lo0.0
+set policy-options policy-statement export-lo0 term 1 then accept
+
+Настраиваем ECMP:
+set routing-options forwarding-table export lbpp
+set policy-options policy-statement lbpp term 1 then load-balance per-packet
+
+Настраиваем iBGP EVPN Overlay:
+set protocols bgp group POD-overlay local-as 65000
+set protocols bgp group POD-overlay type internal
+set protocols bgp group POD-overlay family evpn signaling
+set protocols bgp group POD-overlay local-address 172.16.1.3
+set protocols bgp group POD-overlay neighbor 172.16.0.1 description "Spine01"
+set protocols bgp group POD-overlay neighbor 172.16.0.2 description "Spine02"
+set protocols bgp group POD-overlay multipath
+set switch-options vtep-source-interface lo0.0
+set switch-options route-distinguisher 65003:1
+set switch-options vrf-target target:1:65999
+set switch-options vrf-import vxlan-import
+set protocols evpn multicast-mode ingress-replication
+set protocols evpn encapsulation vxlan
+set policy-options community route-type1 members target:1:65999
+set policy-options policy-statement vxlan-import term type1 from community route-type1
+set policy-options policy-statement vxlan-import term type1 then accept
+
+Настройка VXLAN L2 Gateway для VNI 10:
+set vlans v10 vlan-id 10
+set vlans v10 vxlan vni 10
+set vlans v10 vxlan ingress-node-replication
+set protocols evpn vni-options vni 10 vrf-target target:1:10
+set protocols evpn extended-vni-list 10
+set policy-options community v10 members target:1:10
+set policy-options policy-statement vxlan-import term vlans from community v10
+set policy-options policy-statement vxlan-import term vlans then accept
+
+Настройка VXLAN L2 Gateway для VNI 20:
+set vlans v20 vlan-id 20
+set vlans v20 vxlan vni 20
+set vlans v20 vxlan ingress-node-replication
+set protocols evpn vni-options vni 20 vrf-target target:1:20
+set protocols evpn extended-vni-list 20
+set policy-options community v20 members target:1:20
+set policy-options policy-statement vxlan-import term vlans from community v20
+
+Настройка VXLAN L2 Gateway для VNI 30:
+set vlans v30 vlan-id 30
+set vlans v30 vxlan vni 30
+set vlans v30 vxlan ingress-node-replication
+set protocols evpn vni-options vni 30 vrf-target target:1:30
+set protocols evpn extended-vni-list 30
+set policy-options community v30 members target:1:30
+set policy-options policy-statement vxlan-import term vlans from community v30
+set policy-options policy-statement vxlan-import term vlans then accept
+
+Настройка VXLAN L3 Gateway для VNI 10:
+set vlans v10 l3-interface irb.10
+set interfaces irb unit 10 description "Anycast L3GW"
+set interfaces irb unit 10 family inet address 192.168.10.1/24
+set interfaces irb unit 10 mac 00:00:51:00:01:10
+
+Настройка VXLAN L3 Gateway для VNI 20:
+set vlans v20 l3-interface irb.20
+set interfaces irb unit 20 description "Anycast L3GW"
+set interfaces irb unit 20 family inet address 192.168.20.1/24
+set interfaces irb unit 20 mac 00:00:51:00:01:20
+
+Настройка VXLAN L3 Gateway для VNI 30:
+set vlans v30 l3-interface irb.30
+set interfaces irb unit 30 description "Anycast L3GW"
+set interfaces irb unit 30 family inet address 192.168.30.1/24
+set interfaces irb unit 30 mac 00:00:51:00:01:30
+
+Настройка клиентского порта:
+set interfaces xe-0/0/0 description "Client; VLAN 30"
+set interfaces xe-0/0/0 unit 0 family ethernet-switching interface-mode access
+set interfaces xe-0/0/0 unit 0 family ethernet-switching vlan members v30
